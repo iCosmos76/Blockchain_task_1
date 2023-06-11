@@ -85,10 +85,6 @@ contract ComputersRent is ERC721 {
         _transfer(from, _msgSender(), tokenId);
     }
 
-    function isRented(uint256 tokenId) public view returns (bool) {
-        return computers[tokenId].isRented;
-    }
-
     function getComputerDetails(uint256 tokenId) public view returns (
         string memory computerName,
         address owner,
@@ -171,13 +167,5 @@ contract ComputersRent is ERC721 {
         computers[tokenId].isRenterPay = true;
         computers[tokenId].renterPaymentAddress = _msgSender();
         balances[_msgSender()] += amount;
-    }
-
-    function getBalances(address to) public view returns (uint256) {
-        return balances[to];
-    }
-
-    function getComputerCount() public view returns (uint256) {
-        return computers.length;
     }
 }
